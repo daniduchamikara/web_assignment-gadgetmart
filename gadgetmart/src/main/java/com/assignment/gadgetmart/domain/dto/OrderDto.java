@@ -10,6 +10,10 @@ public class OrderDto {
     private int orderId;
     private String date;
     private double amount;
+    private String addressLine1;
+    private String addressLine2;
+    private String addressLine3;
+    private String mobile;
     private String status;
     private String qty;
     private List<OrderDetailDto> orderDetail;

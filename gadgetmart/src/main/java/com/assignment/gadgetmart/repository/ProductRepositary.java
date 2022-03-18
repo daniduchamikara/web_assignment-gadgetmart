@@ -10,4 +10,5 @@ import java.util.List;
 public interface ProductRepositary extends JpaRepository<Product,Integer> {
 
     List<Product> findByProductCat(String cat);
+    List<Product> findByName(String name);
 }

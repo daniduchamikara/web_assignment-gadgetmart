@@ -34,6 +34,10 @@ public class OrderServerImpl implements OrderServer {
         order.setStatus("1");
         order.setDate(orderDto.getDate());
         order.setAmount(orderDto.getAmount());
+        order.setAddressLine1(orderDto.getAddressLine1());
+        order.setAddressLine2(orderDto.getAddressLine2());
+        order.setAddressLine3(orderDto.getAddressLine3());
+        order.setMobile(orderDto.getMobile());
 
         Order orderres=orderRepository.save(order);
         for (OrderDetailDto orderDetailDto : orderDto.getOrderDetail())
