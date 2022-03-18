@@ -38,6 +38,7 @@ public class OrderServerImpl implements OrderServer {
         order.setAddressLine2(orderDto.getAddressLine2());
         order.setAddressLine3(orderDto.getAddressLine3());
         order.setMobile(orderDto.getMobile());
+        order.setEmail(orderDto.getEmail());
 
         Order orderres=orderRepository.save(order);
         for (OrderDetailDto orderDetailDto : orderDto.getOrderDetail())
@@ -56,6 +57,16 @@ public class OrderServerImpl implements OrderServer {
 
     @Override
     public List<Order> getAllOrders(String email) {
-        return orderRepository.findAll();
+        List<Order> ordeList= orderRepository.findAll();
+
+        OrderDto orderDto=new OrderDto();
+        for (Order order : ordeList) {
+            orderDto.setOrderId(order.getOrderId());
+            orderDto.setAmount(order.getAmount());
+            orderDto.setDate(order.getDate());
+            orderDto.setEmail(order.getEmail());
+        }
+
+        return null;
     }
 }

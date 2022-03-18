@@ -23,4 +23,5 @@ public class Order {
     private String addressLine2;
     private String addressLine3;
     private String mobile;
+    private String email;
 }

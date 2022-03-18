@@ -14,6 +14,7 @@ public class OrderDto {
     private String addressLine2;
     private String addressLine3;
     private String mobile;
+    private String email;
     private String status;
     private String qty;
     private List<OrderDetailDto> orderDetail;
