@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface OrderServer {
     Order placeOrder(OrderDto orderDto);
-    List<Order> getAllOrders(String email);
+    List<OrderDto> getAllOrders(String email);
 }

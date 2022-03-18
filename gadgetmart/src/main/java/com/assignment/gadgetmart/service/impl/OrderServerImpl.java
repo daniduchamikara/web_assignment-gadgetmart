@@ -9,6 +9,7 @@ import com.assignment.gadgetmart.repository.OrderRepository;
 import com.assignment.gadgetmart.service.OrderServer;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,17 +57,19 @@ public class OrderServerImpl implements OrderServer {
     }
 
     @Override
-    public List<Order> getAllOrders(String email) {
+    public List<OrderDto> getAllOrders(String email) {
         List<Order> ordeList= orderRepository.findAll();
 
-        OrderDto orderDto=new OrderDto();
+        List<OrderDto> orderDtoList=new ArrayList<>();
         for (Order order : ordeList) {
+            OrderDto orderDto=new OrderDto();
             orderDto.setOrderId(order.getOrderId());
             orderDto.setAmount(order.getAmount());
             orderDto.setDate(order.getDate());
             orderDto.setEmail(order.getEmail());
+            orderDtoList.add(orderDto);
         }
 
-        return null;
+        return orderDtoList;
     }
 }

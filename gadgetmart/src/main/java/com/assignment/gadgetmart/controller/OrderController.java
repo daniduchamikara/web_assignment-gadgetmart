@@ -25,12 +25,12 @@ public class OrderController {
     }
     
     @GetMapping("/get-all-orders")
-    public List<Order> getAllOrders(String email){
+    public List<OrderDto> getAllOrders(String email){
         return orderServer.getAllOrders(email);
     }
 
     @GetMapping("/get-all-orders-by-email/email")
-    public List<Order> getAllOrdersByEmail(@PathVariable String email){
+    public List<OrderDto> getAllOrdersByEmail(@PathVariable String email){
         return orderServer.getAllOrders(email);
     }
 }
