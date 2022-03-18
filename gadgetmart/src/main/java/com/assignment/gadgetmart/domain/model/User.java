@@ -15,6 +15,10 @@ public class User {
     private int isActive;
     private String email;
     private String password;
+    private String addressLine1;
+    private String addressLine2;
+    private String addressLine3;
+    private String mobile;
 
     
 }
