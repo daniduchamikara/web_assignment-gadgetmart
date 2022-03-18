@@ -1,5 +1,6 @@
 package com.assignment.gadgetmart.service.impl;
 
+import com.assignment.gadgetmart.domain.dto.OrderDetailDto;
 import com.assignment.gadgetmart.domain.dto.OrderDto;
 import com.assignment.gadgetmart.domain.model.Order;
 import com.assignment.gadgetmart.domain.model.OrderDetail;
@@ -29,16 +30,23 @@ public class OrderServerImpl implements OrderServer {
     public Order placeOrder(OrderDto orderDto) {
         Order order = new Order();
         OrderDetail orderDetail=new OrderDetail();
+
         order.setStatus("1");
         order.setDate(orderDto.getDate());
         order.setAmount(orderDto.getAmount());
 
-        orderDetail.setCustomer(orderDto.getCustomer().getCustomerId());
         Order orderres=orderRepository.save(order);
-        orderDetail.setOrderId(String.valueOf(orderres.getOrderId()));
-        orderDetail.setDate(new Date());
-        orderDetail.setQty(orderDto.getQty());
-        orderDetailRepositary.save(orderDetail);
+        for (OrderDetailDto orderDetailDto : orderDto.getOrderDetail())
+        {
+            orderDetail.setCustomer(orderDto.getCustomer().getCustomerId());
+            orderDetail.setOrderId(String.valueOf(orderres.getOrderId()));
+            orderDetail.setDate(new Date());
+            orderDetail.setQty(orderDetailDto.getQty());
+            orderDetail.setProductId(orderDetailDto.getProduct().getId());
+            orderDetail.setAmount(Double.parseDouble(orderDetailDto.getAmount()));
+            orderDetailRepositary.save(orderDetail);
+        }
+
         return order;
     }
 

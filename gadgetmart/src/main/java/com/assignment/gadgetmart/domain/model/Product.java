@@ -22,5 +22,6 @@ public class Product {
     private String userId;
     private String statusId;
     private String productCat;
+    private String imgPath;
 
 }
